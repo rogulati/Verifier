@@ -340,7 +340,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
             ],
             "properties": {
-                "siteName": "vcnodeverifier",
+                "siteName": "parameters('sites_vcnodeverifier_name')",
                 "hostNameType": "Verified"
             }
         }
