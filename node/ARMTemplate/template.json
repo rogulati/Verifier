@@ -3,12 +3,54 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_vcnodeverifier_name": {
-            "defaultValue": "vcnodeverifier",
+            "defaultValue": "[concat('vc-', uniqueString(resourceGroup().id))]",
             "type": "String"
         },
         "serverfarms_didclientapi_verifier_externalid": {
             "defaultValue": "/subscriptions/8e089e5e-ec29-4e53-967b-625163e1dcb4/resourceGroups/rg-diddemo-01/providers/Microsoft.Web/serverfarms/didclientapi-verifier",
             "type": "String"
+        },
+        "azTenantId": {
+            "type": "string",
+            "metadata": {
+                "description": "Entra ID Tenant id"
+            },
+            "defaultValue": "<Tenant id>"
+        },
+        "azClientId": {
+            "type": "string",
+            "metadata": {
+                "description": "azClientId"
+            },
+            "defaultValue": "<azClientId>"
+        },
+        "azClientSecret": {
+            "type": "string",
+            "metadata": {
+                "description": "azClientSecret"
+            },
+            "defaultValue": "<azClientSecret>"
+        },
+        "CredentialManifest": {
+            "type": "string",
+            "metadata": {
+                "description": "Credential URL "
+            },
+            "defaultValue": "<CredentialManifest>"
+        },
+        "IssuerAuthority": {
+            "type": "string",
+            "metadata": {
+                "description": "IssuerAuthority"
+            },
+            "defaultValue": "<IssuerAuthority>"
+        },
+        "VerifierAuthority": {
+            "type": "string",
+            "metadata": {
+                "description": "Entra Verified ID VerifierAuthority"
+            },
+            "defaultValue": "<VerifierAuthority>"
         }
     },
     "variables": {},
@@ -52,27 +94,27 @@
                     "appSettings": [
                         {
                             "name": "azTenantId",
-                            "value": "<your-tenant-id>"
+                            "value": "[parameters('azTenantId')]"
                         },
                         {
                             "name": "azClientId",
-                            "value": "<your-client-id>"
+                            "value": "[parameters('azClientId')]"
                         },
                         {
                             "name": "azClientSecret",
-                            "value": "<your-client-secret>"
+                            "value": "[parameters('azClientSecret')]"
                         },
                         {
                             "name": "CredentialManifest",
-                            "value": "<your-CredentialManifest - CredentialURL>"
+                            "value": "[parameters('CredentialManifest')]"
                         },
                         {
                             "name": "IssuerAuthority",
-                            "value": "<your-IssuerAuthority-DID>"
+                            "value": "[parameters('IssuerAuthority')]"
                         },
                         {
                             "name": "VerifierAuthority",
-                            "value": "<your-DID>"
+                            "value": "[parameters('VerifierAuthority')]"
                         }
                     ]
                 },
