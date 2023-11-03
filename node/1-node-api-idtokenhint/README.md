@@ -7,11 +7,15 @@ products:
 - Entra
 - Verified ID
 description: "A code sample demonstrating issuance and verification of verifiable credentials."
-urlFragment: "active-directory-verifiable-credentials-node"
+urlFragment: "entra-verifiedid-node"
 ---
 # Verifiable Credentials Code Sample
 
 This code sample demonstrates how to use Microsoft's Entra Verified ID to issue and verify verifiable credentials.
+
+## Deploy to Azure
+
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
 
 ## About this sample
 
