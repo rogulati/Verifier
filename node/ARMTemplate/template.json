@@ -2,14 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_vcnodeverifier_name": {
-            "defaultValue": "[concat('vc-', uniqueString(resourceGroup().id))]",
+        "Sites_vcnodeverifier_name": {
+            "defaultValue": "<Verifier web app>",
             "type": "String"
         },
-        "serverfarms_didclientapi_verifier_externalid": {
-            "defaultValue": "/subscriptions/8e089e5e-ec29-4e53-967b-625163e1dcb4/resourceGroups/rg-diddemo-01/providers/Microsoft.Web/serverfarms/didclientapi-verifier",
-            "type": "String"
-        },
+
         "azTenantId": {
             "type": "string",
             "metadata": {
