@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_vcnodeverifier_name": {
-            "defaultValue": "<Insert your Verifier Webapp name>",
+            "defaultValue": "vcnodeverifier01",
             "type": "String"
         },
         "serverfarms_didclientapi_verifier_externalid": {
@@ -340,7 +340,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
             ],
             "properties": {
-                "siteName": "parameters('sites_vcnodeverifier_name')",
+                "siteName": "vcnodeverifier01",
                 "hostNameType": "Verified"
             }
         }
