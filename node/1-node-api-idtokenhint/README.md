@@ -19,7 +19,7 @@ This code sample demonstrates how to use Microsoft's Entra Verified ID to issue 
 
 ## About this sample
 
-Welcome to Microsoft Entra Verified ID (former Azure Active Directory Verifiable Credentials). In this sample, we'll teach you to issue your first verifiable credential: a Verified Credential Expert Card. You'll then use this card to prove to a verifier that you are a Verified Credential Expert, mastered in the art of digital credentialing. The sample uses the preview REST API which supports ID Token hints to pass a payload for the verifiable credential.
+Welcome to Microsoft Entra Verified ID standalone Node.js sample repository. In this sample, we'll help you to deploy a Verifier app that will help you verifye a VerifiedEmployee Verified ID issued to your employees. You could always customize it to accept under Verified ID credentials as well. The sample uses the REST API which supports VerifiedEmployee VC type to pass as a payload for the verifiable credential.
 
 ## Contents
 
