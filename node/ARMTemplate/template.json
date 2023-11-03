@@ -32,13 +32,6 @@
             },
             "defaultValue": "<azClientSecret>"
         },
-        "CredentialManifest": {
-            "type": "string",
-            "metadata": {
-                "description": "Credential URL "
-            },
-            "defaultValue": "<CredentialManifest>"
-        },
         "IssuerAuthority": {
             "type": "string",
             "metadata": {
@@ -104,10 +97,6 @@
                         {
                             "name": "azClientSecret",
                             "value": "[parameters('azClientSecret')]"
-                        },
-                        {
-                            "name": "CredentialManifest",
-                            "value": "[parameters('CredentialManifest')]"
                         },
                         {
                             "name": "IssuerAuthority",
