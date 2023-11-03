@@ -15,7 +15,7 @@ This code sample demonstrates how to use Microsoft's Entra Verified ID to issue 
 
 ## Deploy to Azure
 
-![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Frogulati%2FVerifier%2Fmain%2Fnode%2FARMTemplate%2Ftemplate.json%3Ftoken%3DGHSAT0AAAAAACHHLH24NJJVX6BNBH62H3ZMZKFOHQQ)
 
 ## About this sample
 
