@@ -4,9 +4,6 @@
     "parameters": {
         "sites_vcnodeverifier_name": {
             "value": null
-        },
-        "serverfarms_didclientapi_verifier_externalid": {
-            "value": null
         }
     }
 }

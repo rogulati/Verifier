@@ -6,10 +6,6 @@
             "defaultValue": "vcnodeverifier01",
             "type": "String"
         },
-        "serverfarms_didclientapi_verifier_externalid": {
-            "defaultValue": "/subscriptions/8e089e5e-ec29-4e53-967b-625163e1dcb4/resourceGroups/rg-diddemo-01/providers/Microsoft.Web/serverfarms/didclientapi-verifier",
-            "type": "String"
-        },
         "azTenantId": {
             "type": "string",
             "metadata": {
