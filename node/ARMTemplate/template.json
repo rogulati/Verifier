@@ -2,80 +2,91 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_vcnodeverifier_name": {
-            "defaultValue": "vcnodeverifier01",
-            "type": "String"
-        },        
-        "serverfarms_didclientapi_verifier_externalid": {
-            "defaultValue": "/subscriptions/8e089e5e-ec29-4e53-967b-625163e1dcb4/resourceGroups/rg-diddemo-01/providers/Microsoft.Web/serverfarms/didclientapi-verifier01",
-            "type": "String"
-        },
-        "azTenantId": {
+        "webAppName": {
             "type": "string",
+            "defaultValue": "[concat('webApp-', uniqueString(resourceGroup().id))]",
+            "minLength": 2,
             "metadata": {
-                "description": "Entra ID Tenant id"
+                "description": "Web app name."
             },
-            "defaultValue": "<Tenant id>"
-        },
-        "azClientId": {
-            "type": "string",
-            "metadata": {
-                "description": "azClientId"
+            "azTenantId": {
+                "type": "string",
+                "metadata": {
+                    "description": "Entra ID Tenant id"
+                },
+                "defaultValue": "<Tenant id>"
             },
-            "defaultValue": "<azClientId>"
-        },
-        "azClientSecret": {
-            "type": "string",
-            "metadata": {
-                "description": "azClientSecret"
+            "azClientId": {
+                "type": "string",
+                "metadata": {
+                    "description": "azClientId"
+                },
+                "defaultValue": "<azClientId>"
             },
-            "defaultValue": "<azClientSecret>"
-        },
-        "CredentialManifest": {
-            "type": "string",
-            "metadata": {
-                "description": "Credential URL"
+            "azClientSecret": {
+                "type": "string",
+                "metadata": {
+                    "description": "azClientSecret"
+                },
+                "defaultValue": "<azClientSecret>"
             },
-            "defaultValue": "<CredentialManifest URL>"
-        },
-        "IssuerAuthority": {
-            "type": "string",
-            "metadata": {
-                "description": "IssuerAuthority"
+            "CredentialManifest": {
+                "type": "string",
+                "metadata": {
+                    "description": "Credential URL"
+                },
+                "defaultValue": "<CredentialManifest URL>"
             },
-            "defaultValue": "<IssuerAuthority>"
-        },
-        "VerifierAuthority": {
-            "type": "string",
-            "metadata": {
-                "description": "Entra Verified ID VerifierAuthority"
+            "IssuerAuthority": {
+                "type": "string",
+                "metadata": {
+                    "description": "IssuerAuthority"
+                },
+                "defaultValue": "<IssuerAuthority>"
             },
-            "defaultValue": "<VerifierAuthority>"
+            "VerifierAuthority": {
+                "type": "string",
+                "metadata": {
+                    "description": "Entra Verified ID VerifierAuthority"
+                },
+                "defaultValue": "<VerifierAuthority>"
+            }
         }
     },
-    "variables": {},
+    "variables": {
+        "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]"
+    },
     "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2020-06-01",
+            "name": "[variables('appServicePlanPortalName')]"
+
+        },
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
-            "name": "[parameters('sites_vcnodeverifier_name')]",
+            "name": "[parameters('webAppName')]",
             "location": "East US",
             "kind": "app,linux",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+            ],
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sites_vcnodeverifier_name'), '.azurewebsites.net')]",
+                        "name": "[concat(parameters('webAppName'), '.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sites_vcnodeverifier_name'), '.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('webAppName'), '.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_didclientapi_verifier_externalid')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
@@ -134,10 +145,10 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/ftp')]",
+            "name": "[concat(parameters('webAppName'), '/ftp')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "allow": true
@@ -146,10 +157,10 @@
         {
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/scm')]",
+            "name": "[concat(parameters('webAppName'), '/scm')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "allow": true
@@ -158,10 +169,10 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/web')]",
+            "name": "[concat(parameters('webAppName'), '/web')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "numberOfWorkers": 1,
@@ -239,10 +250,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/552df3d2-11c4-4098-9cb2-9af934777668')]",
+            "name": "[concat(parameters('webAppName'), '/552df3d2-11c4-4098-9cb2-9af934777668')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "status": 4,
@@ -258,10 +269,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/c16932c9-b247-472e-80b9-b7f8d131a0c7')]",
+            "name": "[concat(parameters('webAppName'), '/c16932c9-b247-472e-80b9-b7f8d131a0c7')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "status": 4,
@@ -277,10 +288,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/d3a7cae9-bdf2-4114-821c-19a0f34e7cdc')]",
+            "name": "[concat(parameters('webAppName'), '/d3a7cae9-bdf2-4114-821c-19a0f34e7cdc')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "status": 4,
@@ -296,10 +307,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/e0680503-5583-48cc-a8a3-18a32146b7bc')]",
+            "name": "[concat(parameters('webAppName'), '/e0680503-5583-48cc-a8a3-18a32146b7bc')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "status": 4,
@@ -315,10 +326,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/eaa2746e-c10e-4a0d-885e-0cc9f668eb17')]",
+            "name": "[concat(parameters('webAppName'), '/eaa2746e-c10e-4a0d-885e-0cc9f668eb17')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "status": 4,
@@ -334,10 +345,10 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('sites_vcnodeverifier_name'), '/', parameters('sites_vcnodeverifier_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('webAppName'), '/', parameters('webAppName'), '.azurewebsites.net')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_vcnodeverifier_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
                 "siteName": "vcnodeverifier01",
