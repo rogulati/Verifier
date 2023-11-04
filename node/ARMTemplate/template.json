@@ -351,7 +351,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
-                "siteName": "vcnodeverifier01",
+                "siteName": "[parameters('webAppName')]",
                 "hostNameType": "Verified"
             }
         }
