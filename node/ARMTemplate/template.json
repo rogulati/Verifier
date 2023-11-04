@@ -4,11 +4,11 @@
     "parameters": {
         "webAppName": {
             "type": "string",
-            "defaultValue": "[concat('webApp-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "<Verifier Name>",
             "minLength": 2,
             "metadata": {
-                "description": "Web app name."
-            },
+                "description": "Verifier app name."
+            }},
             "azTenantId": {
                 "type": "string",
                 "metadata": {
@@ -47,11 +47,11 @@
             "VerifierAuthority": {
                 "type": "string",
                 "metadata": {
-                    "description": "Entra Verified ID VerifierAuthority"
+                    "description": "VerifierAuthority"
                 },
                 "defaultValue": "<VerifierAuthority>"
             }
-        }
+        
     },
     "variables": {
         "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]"
