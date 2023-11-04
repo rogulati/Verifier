@@ -62,7 +62,8 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2020-06-01",
             "name": "[variables('appServicePlanPortalName')]",
-            "location": "East US"
+            "location": "East US",
+            "kind": "linux"
 
         },
         {
