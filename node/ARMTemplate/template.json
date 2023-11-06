@@ -50,7 +50,7 @@
             "metadata": {
                 "description": "Github repo branch"
             },
-            "defaultValue": "cljung-dev"
+            "defaultValue": "main"
         }
 
     },
@@ -85,6 +85,7 @@
             },
             "kind": "linux"
         },
+        
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
