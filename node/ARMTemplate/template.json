@@ -43,7 +43,7 @@
             "metadata": {
                 "description": "Github repo URL"
             },
-            "defaultValue": "https://github.com/rogulati/Verifier"
+            "defaultValue": "https://github.com/rogulati/Verifier.git"
         },
         "branch": {
             "type": "string",
@@ -85,7 +85,7 @@
             },
             "kind": "linux"
         },
-        
+
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2022-09-01",
