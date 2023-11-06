@@ -55,7 +55,8 @@
 
     },
     "variables": {
-        "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]"
+        "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]",
+        "linuxFxVersion": "NODE|18-lts"
     },
     "resources": [
         {
@@ -116,7 +117,7 @@
                 "vnetContentShareEnabled": false,
                 "siteConfig": {
                     "numberOfWorkers": 1,
-                    "linuxFxVersion": "NODE:18-lts",
+                    "linuxFxVersion": "[variables('linuxFxVersion')]",
                     "acrUseManagedIdentityCreds": false,
                     "alwaysOn": false,
                     "http20Enabled": false,
@@ -196,7 +197,7 @@
                     "hostingstart.html"
                 ],
                 "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "NODE:18-lts",
+                "linuxFxVersion": "[variables('linuxFxVersion')]",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "remoteDebuggingVersion": "VS2019",
