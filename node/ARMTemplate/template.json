@@ -37,6 +37,20 @@
                 "description": "VerifierAuthority"
             },
             "defaultValue": "<VerifierAuthority>"
+        },
+        "repoURL": {
+            "type": "string",
+            "metadata": {
+                "description": "Github repo URL"
+            },
+            "defaultValue": "https://github.com/rogulati/Verifier"
+        },
+        "branch": {
+            "type": "string",
+            "metadata": {
+                "description": "Github repo branch"
+            },
+            "defaultValue": "cljung-dev"
         }
 
     },
@@ -139,32 +153,27 @@
                 "redundancyMode": "None",
                 "storageAccountRequired": false,
                 "keyVaultReferenceIdentity": "SystemAssigned"
-            }
+            },
+
+            "resources": [
+                {
+                  "type": "sourcecontrols",
+                  "apiVersion": "2018-02-01",
+                  "name": "web",
+                  "location": "[resourceGroup().location]",
+                  "dependsOn": [
+                    "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+                  ],
+                  "properties": {
+                    "repoUrl": "[parameters('repoURL')]",
+                    "branch": "[parameters('branch')]",
+                    "isManualIntegration": true
+                  }
+                }
+            ]
+
         },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/ftp')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "allow": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/scm')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "allow": true
-            }
-        },
+
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2022-09-01",
@@ -246,101 +255,7 @@
                 "azureStorageAccounts": {}
             }
         },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/552df3d2-11c4-4098-9cb2-9af934777668')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "ms-azuretools-vscode",
-                "deployer": "ms-azuretools-vscode",
-                "message": "Created via a push deployment",
-                "start_time": "2023-11-03T23:24:48.1300291Z",
-                "end_time": "2023-11-03T23:25:42.6512859Z",
-                "active": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/c16932c9-b247-472e-80b9-b7f8d131a0c7')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "ms-azuretools-vscode",
-                "deployer": "ms-azuretools-vscode",
-                "message": "Created via a push deployment",
-                "start_time": "2023-11-02T16:35:23.9506384Z",
-                "end_time": "2023-11-02T16:36:21.6869009Z",
-                "active": false
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/d3a7cae9-bdf2-4114-821c-19a0f34e7cdc')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "ms-azuretools-vscode",
-                "deployer": "ms-azuretools-vscode",
-                "message": "Created via a push deployment",
-                "start_time": "2023-10-31T23:56:23.9897292Z",
-                "end_time": "2023-10-31T23:57:12.5384144Z",
-                "active": false
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/e0680503-5583-48cc-a8a3-18a32146b7bc')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "ms-azuretools-vscode",
-                "deployer": "ms-azuretools-vscode",
-                "message": "Created via a push deployment",
-                "start_time": "2023-10-31T23:48:19.1960471Z",
-                "end_time": "2023-10-31T23:49:45.7068552Z",
-                "active": false
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/deployments",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/eaa2746e-c10e-4a0d-885e-0cc9f668eb17')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "ms-azuretools-vscode",
-                "deployer": "ms-azuretools-vscode",
-                "message": "Created via a push deployment",
-                "start_time": "2023-11-01T00:01:28.1662382Z",
-                "end_time": "2023-11-01T00:02:14.0749934Z",
-                "active": false
-            }
-        },
+
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2022-09-01",
