@@ -35,6 +35,7 @@ module.exports.config = config;
 config.apiKey = uuid.v4();
 ///////////////////////////////////////////////////////////////////////////////////////
 // Check that the manifestURL have the matching tenantId with the config file
+/* === not needed for a verifier ===
 var manifestUrl = config.CredentialManifest.split("/")[5];
 if ( config.azTenantId != manifestUrl ) {
   throw new Error( `TenantId in ManifestURL ${manifestUrl}. does not match tenantId in config file ${config.azTenantId}` );
@@ -59,7 +60,7 @@ fetch( config.CredentialManifest, { method: 'GET'} )
       throw new Error( `Wrong IssuerAuthority in config file ${config.IssuerAuthority}. Issuer in manifest is ${config.manifest.iss}` );
     }
   }); 
-
+*/
 ///////////////////////////////////////////////////////////////////////////////////////
 // MSAL
 var msalConfig = {
@@ -187,7 +188,7 @@ app.get("/echo",
             'x-original-host': req.headers['x-original-host'],
           //  'IssuerAuthority': config.IssuerAuthority,
             'VerifierAuthority': config.VerifierAuthority,
-            'manifestURL': config.CredentialManifest,
+          //  'manifestURL': config.CredentialManifest,
             'clientId': config.azClientId,
             'configFile': configFile
             });

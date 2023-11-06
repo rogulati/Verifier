@@ -31,20 +31,6 @@
             },
             "defaultValue": "<azClientSecret>"
         },
-        "CredentialManifest": {
-            "type": "string",
-            "metadata": {
-                "description": "Credential URL"
-            },
-            "defaultValue": "<CredentialManifest URL>"
-        },
-        "IssuerAuthority": {
-            "type": "string",
-            "metadata": {
-                "description": "IssuerAuthority"
-            },
-            "defaultValue": "<IssuerAuthority>"
-        },
         "VerifierAuthority": {
             "type": "string",
             "metadata": {
@@ -63,8 +49,10 @@
             "apiVersion": "2020-06-01",
             "name": "[variables('appServicePlanPortalName')]",
             "location": "East US",
+            "properties": {
+                "reserved": true
+            },
             "kind": "linux"
-
         },
         {
             "type": "Microsoft.Web/sites",
@@ -116,14 +104,6 @@
                         {
                             "name": "azClientSecret",
                             "value": "[parameters('azClientSecret')]"
-                        },
-                        {
-                            "name": "CredentialManifest",
-                            "value": "[parameters('CredentialManifest')]"
-                        },
-                        {
-                            "name": "IssuerAuthority",
-                            "value": "[parameters('IssuerAuthority')]"
                         },
                         {
                             "name": "VerifierAuthority",
