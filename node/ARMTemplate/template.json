@@ -98,7 +98,7 @@
                 "vnetContentShareEnabled": false,
                 "siteConfig": {
                     "numberOfWorkers": 1,
-                    "linuxFxVersion": "NODE|18-lts",
+                    "linuxFxVersion": "NODE:18-lts",
                     "acrUseManagedIdentityCreds": false,
                     "alwaysOn": false,
                     "http20Enabled": false,
