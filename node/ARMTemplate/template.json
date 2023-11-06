@@ -191,7 +191,7 @@
                     "hostingstart.html"
                 ],
                 "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "NODE|18-lts",
+                "linuxFxVersion": "NODE:18-lts",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "remoteDebuggingVersion": "VS2019",
@@ -199,7 +199,7 @@
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 100,
                 "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$vcnodeverifier",
+                "publishingUsername": "$parameters('webAppName')",
                 "scmType": "None",
                 "use32BitWorkerProcess": true,
                 "webSocketsEnabled": false,
