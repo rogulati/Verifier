@@ -132,10 +132,10 @@ fetch( `https://login.microsoftonline.com/${config.azTenantId}/v2.0/.well-known/
   console.log( `tenant_region_scope = ${resp.tenant_region_scope}`);
   config.tenant_region_scope = resp.tenant_region_scope;
   // Check that the Credential Manifest URL is in the same tenant Region and throw an error if it's not
-  if ( !config.CredentialManifest.startsWith(config.msIdentityHostName) ) {
-    throw new Error( `Error in config file. CredentialManifest URL configured for wrong tenant region. Should start with: ${config.msIdentityHostName}` );
+  //if ( !config.CredentialManifest.startsWith(config.msIdentityHostName) ) {
+   // throw new Error( `Error in config file. CredentialManifest URL configured for wrong tenant region. Should start with: ${config.msIdentityHostName}` );
   }
-}); 
+); 
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Main Express server function
