@@ -225,7 +225,7 @@
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
                 "managedPipelineMode": "Integrated",
-                "appCommandLine": "cd /home/site/repository/node/node-api-verifier/; npm install; mv ./* /home/site/wwwroot;",
+                "appCommandLine": "",
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
