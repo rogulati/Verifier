@@ -56,7 +56,8 @@
     },
     "variables": {
         "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]",
-        "linuxFxVersion": "NODE|18-lts"
+        "linuxFxVersion": "NODE|18-lts",
+        "appRootFolder": "node\\node-api-folder"
     },
     "resources": [
         {
@@ -148,7 +149,6 @@
                 "clientCertEnabled": false,
                 "clientCertMode": "Required",
                 "hostNamesDisabled": false,
-                "customDomainVerificationId": "2A6298C0BB03978D2277EA1A95B6138543908699B97B756AB9F9F52D4E621932",
                 "containerSize": 0,
                 "dailyMemoryTimeQuota": 0,
                 "httpsOnly": false,
@@ -212,10 +212,11 @@
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
                 "managedPipelineMode": "Integrated",
+                "appCommandLine": "",
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
+                        "physicalPath": "[concat('site\\wwwroot\\', variables('appRootFolder'))]",                        
                         "preloadEnabled": false
                     }
                 ],
