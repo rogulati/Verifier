@@ -145,7 +145,7 @@
                         },
                         {
                             "name": "PROJECT",
-                            "value": "[parameters('projectFolder')]"
+                            "value": "[variables('projectFolder')]"
                         }
                     ]
                 },
