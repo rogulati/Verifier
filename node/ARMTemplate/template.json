@@ -57,7 +57,8 @@
     "variables": {
         "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]",
         "linuxFxVersion": "NODE|18-lts",
-        "appRootFolder": "node\\node-api-folder"
+        "virtualAppRootFolder": "node\\node-api-folder",
+        "projectFolder": "node/node-api-folder"
     },
     "resources": [
         {
@@ -141,6 +142,10 @@
                         {
                             "name": "VerifierAuthority",
                             "value": "[parameters('VerifierAuthority')]"
+                        },
+                        {
+                            "name": "PROJECT",
+                            "value": "[parameters('projectFolder')]"
                         }
                     ]
                 },
@@ -174,6 +179,20 @@
                 }
             ]
 
+        },
+
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('webAppName'), '/', parameters('webAppName'), '.azurewebsites.net')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ],
+            "properties": {
+                "siteName": "[parameters('webAppName')]",
+                "hostNameType": "Verified"
+            }
         },
 
         {
@@ -216,7 +235,7 @@
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "[concat('site\\wwwroot\\', variables('appRootFolder'))]",                        
+                        "physicalPath": "[concat('site\\wwwroot\\', variables('virtualAppRootFolder'))]",                        
                         "preloadEnabled": false
                     }
                 ],
@@ -257,20 +276,7 @@
                 "minimumElasticInstanceCount": 0,
                 "azureStorageAccounts": {}
             }
-        },
-
-        {
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/', parameters('webAppName'), '.azurewebsites.net')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "siteName": "[parameters('webAppName')]",
-                "hostNameType": "Verified"
-            }
         }
+
     ]
 }
