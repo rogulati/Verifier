@@ -56,9 +56,7 @@
     },
     "variables": {
         "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]",
-        "linuxFxVersion": "NODE|18-lts",
-        "virtualAppRootFolder": "node\\node-api-folder",
-        "projectFolder": "node/node-api-folder"
+        "linuxFxVersion": "NODE|18-lts"
     },
     "resources": [
         {
@@ -142,10 +140,6 @@
                         {
                             "name": "VerifierAuthority",
                             "value": "[parameters('VerifierAuthority')]"
-                        },
-                        {
-                            "name": "PROJECT",
-                            "value": "[variables('projectFolder')]"
                         }
                     ]
                 },
@@ -231,11 +225,11 @@
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
                 "managedPipelineMode": "Integrated",
-                "appCommandLine": "",
+                "appCommandLine": "cd /home/site/repository/node/node-api-verifier/; npm install; mv ./* /home/site/wwwroot;",
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "[concat('site\\wwwroot\\', variables('virtualAppRootFolder'))]",                        
+                        "physicalPath": "'site\\wwwroot",                        
                         "preloadEnabled": false
                     }
                 ],
