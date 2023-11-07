@@ -148,7 +148,6 @@
                 "clientCertEnabled": false,
                 "clientCertMode": "Required",
                 "hostNamesDisabled": false,
-                "customDomainVerificationId": "2A6298C0BB03978D2277EA1A95B6138543908699B97B756AB9F9F52D4E621932",
                 "containerSize": 0,
                 "dailyMemoryTimeQuota": 0,
                 "httpsOnly": false,
@@ -174,6 +173,20 @@
                 }
             ]
 
+        },
+
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2022-09-01",
+            "name": "[concat(parameters('webAppName'), '/', parameters('webAppName'), '.azurewebsites.net')]",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ],
+            "properties": {
+                "siteName": "[parameters('webAppName')]",
+                "hostNameType": "Verified"
+            }
         },
 
         {
@@ -212,10 +225,11 @@
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
                 "managedPipelineMode": "Integrated",
+                "appCommandLine": "",
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "site\\wwwroot",
+                        "physicalPath": "'site\\wwwroot",                        
                         "preloadEnabled": false
                     }
                 ],
@@ -256,20 +270,7 @@
                 "minimumElasticInstanceCount": 0,
                 "azureStorageAccounts": {}
             }
-        },
-
-        {
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "apiVersion": "2022-09-01",
-            "name": "[concat(parameters('webAppName'), '/', parameters('webAppName'), '.azurewebsites.net')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-                "siteName": "[parameters('webAppName')]",
-                "hostNameType": "Verified"
-            }
         }
+
     ]
 }
