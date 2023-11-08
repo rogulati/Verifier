@@ -237,7 +237,7 @@
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "'site\\wwwroot",                        
+                        "physicalPath": "'site/wwwroot",                        
                         "preloadEnabled": false
                     }
                 ],
