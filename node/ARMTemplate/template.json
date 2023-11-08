@@ -142,8 +142,8 @@
                             "value": "[parameters('VerifierAuthority')]"
                         },
                         {
-                            "name": "SCM_REPOSITORY_PATH",
-                            "value": "repository/node/node-api-verifier"
+                            "name": "PRE_BUILD_COMMAND",
+                            "value": "cd node/node-api-verifier"
                         }
                     ]
                 },
