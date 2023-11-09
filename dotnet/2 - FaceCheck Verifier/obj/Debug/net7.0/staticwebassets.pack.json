@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\VerifiedCredentialExpert-icon.png",
+      "PackagePath": "staticwebassets\\VerifiedCredentialExpert-icon.png"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\authenticator-icon.png",
+      "PackagePath": "staticwebassets\\authenticator-icon.png"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\qrcode.min.js",
+      "PackagePath": "staticwebassets\\qrcode.min.js"
+    },
+    {
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.AspNetCoreVerifiableCredentials.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "build\\AspNetCoreVerifiableCredentials.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "buildMultiTargeting\\AspNetCoreVerifiableCredentials.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "buildTransitive\\AspNetCoreVerifiableCredentials.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

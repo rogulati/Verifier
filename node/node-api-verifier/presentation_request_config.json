@@ -15,7 +15,7 @@
   "includeReceipt": true,
   "requestedCredentials": [
     {
-      "type": "VerifiedEmployee"
+      "type": "VC type from config"
     }
   ],
   "configuration": {

@@ -30,7 +30,7 @@ if ( !requestConfigFile ) {
   requestConfigFile = process.env.PRESENTATIONFILE || './presentation_request_config.json';
 }
 var presentationConfig = require( requestConfigFile );
-presentationConfig.registration.clientName = "Node.js Verified ID sample";
+presentationConfig.registration.clientName = "Entra Verified ID verifier";
 // copy the issuerDID from the settings and fill in the acceptedIssuers part of the payload
 // this means only that issuer should be trusted for the requested credentialtype
 // this value is an array in the payload, you can trust multiple issuers for the same credentialtype
@@ -86,7 +86,7 @@ mainApp.app.get('/api/verifier/presentation-request', async (req, res) => {
   presentationConfig.authority = process.env.VerifierAuthority || mainApp.config["VerifierAuthority"]
   presentationConfig.callback.url = `https://${req.hostname}/api/verifier/presentation-request-callback`;
   presentationConfig.callback.state = id;
-
+  //presentationConfig.type = process.env.VCtype || mainApp.config["VCtype"];
   console.log( 'Request Service API Request' );
   var client_api_request_endpoint = `${mainApp.config.msIdentityHostName}verifiableCredentials/createPresentationRequest`;
   console.log( client_api_request_endpoint );
