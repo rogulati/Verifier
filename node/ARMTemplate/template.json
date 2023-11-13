@@ -4,13 +4,34 @@
     "parameters": {
         "webAppName": {
             "type": "string",
-            "defaultValue": "<Verifier Name>",
+            "defaultValue": "<App Name>",
             "minLength": 2,
             "metadata": {
-                "description": "Verifier app name."
+                "description": "app name."
             }
         },
-        "azTenantId": {
+        "repoURL": {
+            "type": "string",
+            "metadata": {
+                "description": "Github repo URL"
+            },
+            "defaultValue": "https://github.com/rogulati/Verifier.git"
+        },
+        "branch": {
+            "type": "string",
+            "metadata": {
+                "description": "Github repo branch"
+            },
+            "defaultValue": "main"
+        },
+		"Project": {
+			"type": "string",
+			"metadata": {
+				"description": "Github repo subfolder"
+			},
+			"defaultValue": "node/node-api-verifier"
+		},
+		"azTenantId": {
             "type": "string",
             "metadata": {
                 "description": "Entra ID Tenant id"
@@ -38,21 +59,13 @@
             },
             "defaultValue": "<VerifierAuthority>"
         },
-        "repoURL": {
+        "CredentialType": {
             "type": "string",
             "metadata": {
-                "description": "Github repo URL"
+                "description": "CredentialType"
             },
-            "defaultValue": "https://github.com/rogulati/Verifier.git"
-        },
-        "branch": {
-            "type": "string",
-            "metadata": {
-                "description": "Github repo branch"
-            },
-            "defaultValue": "main"
+            "defaultValue": "VerifiedEmployee"
         }
-
     },
     "variables": {
         "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]",
@@ -126,6 +139,18 @@
                     "minimumElasticInstanceCount": 0,
                     "appSettings": [
                         {
+                            "name": "ENABLE_ORYX_BUILD",
+                            "value": "false"
+                        },
+                        {
+                            "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+                            "value": "false"
+                        },
+                        {
+                            "name": "DEPLOYMENT_SOURCE",
+                            "value": "[Concat('/home/site/repository/', parameters('Project'))]"
+                        },
+						{
                             "name": "azTenantId",
                             "value": "[parameters('azTenantId')]"
                         },
@@ -142,13 +167,9 @@
                             "value": "[parameters('VerifierAuthority')]"
                         },
                         {
-                            "name": "PRE_BUILD_COMMAND",
-                            "value": "cd /home/site/repository/node/node-api-verifier; pwd > ./prebuild.txt"
-                        },
-                        {
-                            "name": "PROJECT",
-                            "value": "node/node-api-verifier"
-                        }
+                            "name": "CredentialType",
+                            "value": "[parameters('CredentialType')]"
+                        }   
                     ]
                 },
                 "scmSiteAlsoStopped": false,
@@ -222,22 +243,22 @@
                 "linuxFxVersion": "[variables('linuxFxVersion')]",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
-                "remoteDebuggingVersion": "VS2019",
+            	"remoteDebuggingVersion": "VS2019",
                 "httpLoggingEnabled": true,
                 "acrUseManagedIdentityCreds": false,
                 "logsDirectorySizeLimit": 100,
                 "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$parameters('webAppName')",
+                "publishingUsername": "[concat('$', parameters('webAppName'))]",
                 "scmType": "None",
                 "use32BitWorkerProcess": true,
                 "webSocketsEnabled": false,
                 "alwaysOn": false,
                 "managedPipelineMode": "Integrated",
-                "appCommandLine": "",
+                "appCommandLine": "[concat('cd /home/site/wwwroot && cp -r /home/site/repository/', parameters('Project'), '/* . && npm install && npm run start')]",
                 "virtualApplications": [
                     {
                         "virtualPath": "/",
-                        "physicalPath": "'wwwroot",                        
+                        "physicalPath": "site\\wwwroot",                        
                         "preloadEnabled": false
                     }
                 ],
