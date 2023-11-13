@@ -95,7 +95,7 @@ mainApp.app.get('/api/verifier/presentation-request', async (req, res) => {
 
   presentationConfig.callback.url = `https://${req.hostname}/api/verifier/presentation-request-callback`;
   presentationConfig.callback.state = id;
-
+  //presentationConfig.type = process.env.VCtype || mainApp.config["VCtype"];
   console.log( 'Request Service API Request' );
   var client_api_request_endpoint = `${mainApp.config.msIdentityHostName}verifiableCredentials/createPresentationRequest`;
   console.log( client_api_request_endpoint );
