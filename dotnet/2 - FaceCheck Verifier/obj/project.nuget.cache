@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hakxkgzNQQXNbmDzYnaCe3qhQJLRFfEPm1CrlqTzK5oUMiTgyP5Nly3M2QHdkfsigmHoZWsZGJ/SrQ0fsZaU3A==",
+  "dgSpecHash": "t7fufQlTUlMg5BshxruJbpAoLCRBe0Qp4tHTiM4sSXRE+sy8IOh0vsMS6CeT6N7PpC8gSprz//PQdaqoTmaS7g==",
   "success": true,
-  "projectFilePath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\AspNetCoreVerifiableCredentials.csproj",
+  "projectFilePath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\AspNetCoreVerifiableCredentials.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rogulati\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\rogulati\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

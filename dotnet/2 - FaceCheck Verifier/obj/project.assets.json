@@ -2455,11 +2455,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\AspNetCoreVerifiableCredentials.csproj",
+      "projectUniqueName": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\AspNetCoreVerifiableCredentials.csproj",
       "projectName": "AspNetCoreVerifiableCredentials",
-      "projectPath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\AspNetCoreVerifiableCredentials.csproj",
+      "projectPath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\AspNetCoreVerifiableCredentials.csproj",
       "packagesPath": "C:\\Users\\rogulati\\.nuget\\packages\\",
-      "outputPath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\obj\\",
+      "outputPath": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rogulati\\AppData\\Roaming\\NuGet\\NuGet.Config"

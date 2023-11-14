@@ -122,8 +122,8 @@
                         .catch(error => displayMessage(error))
                         .then(function (message) {
                             details = JSON.parse(message);
-                            var acceptedIssuers = "Accepted issuer(s): any";
-                            if (details.acceptedIssuers.length > 0) {
+                           var acceptedIssuers = "Accepted issuer(s): any";
+                          if (details.acceptedIssuers.length > 0) {
                                 acceptedIssuers = "Accepted issuer(s): " + details.acceptedIssuers.join();
                             }
                             document.getElementById('idTitle').innerHTML = "Presentation of credential type: " + details.type;

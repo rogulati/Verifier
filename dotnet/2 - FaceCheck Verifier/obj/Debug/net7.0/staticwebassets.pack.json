@@ -1,31 +1,31 @@
 {
   "Files": [
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\VerifiedCredentialExpert-icon.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\VerifiedCredentialExpert-icon.png",
       "PackagePath": "staticwebassets\\VerifiedCredentialExpert-icon.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\authenticator-icon.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\authenticator-icon.png",
       "PackagePath": "staticwebassets\\authenticator-icon.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\favicon.ico",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\favicon.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\index.html",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\qrcode.min.js",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\qrcode.min.js",
       "PackagePath": "staticwebassets\\qrcode.min.js"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\wwwroot\\styles.css",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\2 - FaceCheck Verifier\\wwwroot\\styles.css",
       "PackagePath": "staticwebassets\\styles.css"
     },
     {
