@@ -11,21 +11,17 @@ urlFragment: "active-directory-verifiable-credentials-dotnet"
 ---
 # Verifiable Credentials Code Sample
 
-This code sample demonstrates how to use Microsoft Entra Verified ID to issue and consume verifiable credentials.
+This code sample demonstrates how to use Microsoft Entra Verified ID to verify verifiable credentials with FaceCheck.
 
 ## About this sample
 
-Welcome to Microsoft Entra Verified ID. In this sample, we'll teach you to issue your first verifiable credential: a Verified Credential Expert Card. You'll then use this card to prove to a verifier that you are a Verified Credential Expert, mastered in the art of digital credentialing. The sample uses the preview REST API which supports ID Token hints to pass a payload for the verifiable credential.
+Welcome to Microsoft Entra Verified ID. Using this sample, you could use it to build a verifier app to prove to a verifier that you are a VerifiedEmployee, with FaceCheck. 
 
 ## Contents
 
-The project is divided in 2 parts, one for issuance and one for verifying a verifiable credential. Depending on the scenario you need you can remove 1 part. To verify if your environment is completely working you can use both parts to issue a verifiedcredentialexpert VC and verify that as well.
+To verify if your environment is completely working you can issue a VerifiedEmployee Verified ID using custom webapp or myaccount.microsoft.com for Quick Config deployments and then verify it using this sample with FaceCheck.
 
-| Issuance | |
-|------|--------|
-| Pages/Issuer.cshtml|The basic webpage containing the javascript to call the APIs for issuance. |
-| IssuerController.cs | This is the controller which contains the API called from the webpage. It calls the REST API after getting an access token through MSAL. |
-| issuance_request_config.json | The sample payload send to the server to start issuing a vc. |
+
 
 | Verification | |
 |------|--------|
@@ -72,20 +68,18 @@ cd active-directory-verifiable-credentials-dotnet/1-asp-net-core-api-idtokenhint
 ```
 
 ### Create your credential
-To use the sample we need a configured Verifiable Credential in the azure portal.
-In the project directory CredentialFiles you will find the `VerifiedCredentialExpertDisplayDefinition.json` file and the `VerifiedCredentialExpertRulesDefinition.json` file. Use these 2 files to create your own VerifiedCredentialExpert credential. 
+To use the sample we need a configured Verified ID service with VerifiedEmployee credential in the Entra admin center portal.
 
 You can find the instructions on how to create a Verifiable Credential in the azure portal [here](https://aka.ms/didfordevs)
 
-Make sure you copy the value of the credential URL after you created the credential in the portal. 
 Copy the URL in the `CredentialManifest` part of the `appsettings.json`. 
 You need to manually copy your Microsoft AAD Verifiable Credential service created Decentralized Identifier (did:..) value from this page as well and paste that in the appsettings.json file for `IssuerAuthority`.
 
 ### API Payloads
-The API is called with special payloads for issuing and verifying verifiable credentials. The sample payload files are modified by the sample code by copying the correct values from the `appsettings.json` file.
-If you want to modify the payloads `issuance_request_config.json` and `presentation_request_config.json` files yourself, make sure you comment out the code overwriting the values in the VerifierController.cs and IssuerController.cs files. The code overwrites the Authority, Manifest and trustedIssuers values. The callback URI is modified in code to match your hostname.
+The API is called with special payloads for verifying verifiable credentials with FaceCheck. The sample payload files are modified by the sample code by copying the correct values from the `appsettings.json` file.
+If you want to modify the payloads, use `presentation_request_config.json` files yourself, make sure you comment out the code overwriting the values in the VerifierController.cs. The code overwrites the Authority, Manifest and trustedIssuers values. The callback URI is modified in code to match your hostname.
 
-For issuance you don't need to change anything, for verifying make sure you follow the instructions from the quickstart and copy paste the correct payload to the `presentation_request_config.json`
+For verifying make sure you follow the instructions from the quickstart and copy paste the correct payload to the `presentation_request_config.json`. You will notice facecheck configuration settings in `presentation_request_config.json` as well. You could keep the default value 70 or update it per your scenario.
 
 Make sure you copy the `ClientId`, `ClientSecret` and `TenantTd` you copied when creating the app registration to the `appsettings.json` as well.
 
