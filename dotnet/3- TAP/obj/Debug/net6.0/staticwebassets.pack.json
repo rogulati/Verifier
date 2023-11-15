@@ -1,35 +1,35 @@
 {
   "Files": [
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\authenticator-icon.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\authenticator-icon.png",
       "PackagePath": "staticwebassets\\authenticator-icon.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\favicon.ico",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\favicon.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\index.html",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\qrcode.min.js",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\qrcode.min.js",
       "PackagePath": "staticwebassets\\qrcode.min.js"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\rcdemos-banner.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\rcdemos-banner.png",
       "PackagePath": "staticwebassets\\rcdemos-banner.png"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\styles.css",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\styles.css",
       "PackagePath": "staticwebassets\\styles.css"
     },
     {
-      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3 - onboard-with-verifiedid-and-tap\\wwwroot\\woodgrove.png",
+      "Id": "C:\\repos\\Standalone Verifier\\Verifier\\dotnet\\3- TAP\\wwwroot\\woodgrove.png",
       "PackagePath": "staticwebassets\\woodgrove.png"
     },
     {

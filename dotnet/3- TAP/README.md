@@ -5,39 +5,36 @@ languages:
 products:
 - microsoft entra
 - verified id
-description: "A code sample demonstrating verification of verifiable credentials and based on that onboarding new employees to Azure Active Directory."
-urlFragment: "4-asp-net-core-api-verify-and-onboard"
+description: "A code sample demonstrating verification of verifiable credentials and based on that onboarding new employees to Entra ID."
 ---
 # Verified ID Code Sample
 
-This dotnet code sample is for a developer who wants to verify identity of a employee using Microsoft Entra Verified ID from an ISV partner. 
-Upon successful verification the employee will be provided a Temporary access passcode to onboard to Azure Active Directory and configure 
-authentication methods for subsequent logins. 
+This dotnet code sample is for a developer who wants to verify identity of a employee using Microsoft Entra Verified ID. 
+Upon successful verification the employee will be provided a Temporary access passcode to onboard to Entra ID and configure authentication methods for subsequent logins. 
 
 ## About this sample
 
 Welcome to Microsoft Entra Verified ID which includes the Request Service REST API. This API allows you to issue and verify credentials. 
-This sample shows you how to verify Microsoft Entra Verified ID from an ISV partner offering Identity Verification and Proofing (IDV) using the Request Service REST API.
+This sample shows you how to verify Verified Employee Verified ID using the Request Service REST API.
 
 ## Contents
 
-The project is divided in 2 parts, one for issuance and one for verifying a verifiable credential. Depending on the scenario you need you can remove 1 part. To verify if your environment is completely working you can use both parts to issue a verifiedcredentialexpert VC and verify that as well.
 
 | Verification | |
 |------|--------|
 | Pages/Verifier.cshtml | The website acting as the verifier of the verifiable credential, if you have one, else it provides option to get one from the issuer.
 | VerifierController.cs | This is the controller which contains the API called from the webpage. It calls the REST API after getting an access token through MSAL and helps verifying the presented verifiable credential.
-| presentation_request_config - TrueIdentitySample.json | The sample payload send to the server to verify identity of a user using Microsoft Entra Verified ID from an ISV partner - True Identity.
+| presentation_request_config - TrueIdentitySample.json | The sample payload send to the server to verify identity of a user using Microsoft Entra Verified ID with VC Type= VerifiedEmployee.
 
 ## Setup
 
 Before you can run this sample make sure your environment is setup correctly, follow the instructions in the documentation [here](https://aka.ms/vcsetup).
-The sample excepts you have a specific user say Alex (FirstName: Alex, Last Name: Wilber) already provisioned in Azure AD with a single auth method Temporary access code
+The sample excepts you have Temporary Access enabled and targetted to the users as an Authentication method.
 
 ### Create application registration
 Run the [Configure.PS1](../1-asp-net-core-api-idtokenhint/AppCreationScripts/AppCreationScripts.md) powershell script in the AppCreationScripts directory or follow these manual steps to create an application registrations, give the application the correct permissions so it can access the Verified ID Request REST API:
 
-Register an application in Azure Active Directory: 
+Register an application in Entra ID: 
 1. Sign in to the Azure portal using either a work or school account or a personal Microsoft account.
 2. Navigate to the Microsoft identity platform for developers App registrations page.
 3.	Select New registration
@@ -64,9 +61,8 @@ Register an application in Azure Active Directory:
 ![Admin concent](ReadmeFiles/AdminConcent.PNG)
 9.  Enabling the Temporary Access Pass (TAP) 
     - Sign in to the Azure portal as a Global admin and select Azure Active Directory > Security > Authentication methods > Temporary Access Pass
-    - Select Yes to enable the policy and add Alex Wilber and select which users have the policy applied, and any General settings.
-    Note: If you do not have an employee Alex Wilber that needs to be onboarded, replace Alex Wilber with another employee. In real world, new employees may be provisioned
-    into Azure AD via HR ISVs. More details [here](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/what-is-hr-driven-provisioning)
+    - Select Yes to enable the policy and add the scoped users have the policy applied, and any General settings.
+    
     Note:TBD: To ensure existing employees going through this onboarding flow cannot access https://aka.ms/mfasetup without providing TAP, TAP may need to be
     generated so existing users are prompted for it and they will need to go through this flow to get the TAP. The code needs an update to be able to handle the 
     scenario where user may have an active TAP already. If you are using this sample for demo purposes, please consider setting default lifetime to 10 mins. 
@@ -92,13 +88,7 @@ ngrok http 5000
 ```
 **Note**: The port number should be the same as the one configured in Properties\launchSettings.json and the Redirect URI configured in **Create application registration ** section above.
 
-6. Update the **IdvUrlWithReturnUrl** parameter in the `appsettings.json` file to the nrgok URL or the publically reachable URL where this sample is running.
-Example: returnUrl=https%3A%2F%**2Fcf8a-68-249-160-201.ngrok.io**%2Fverifier
 
-7. Note: For this sample we are using a test IDV called TrueIdentity with following URL configured in **IdvUrlWithReturnUrl** parameter in the `appsettings.json` file. It also includes the primarily
-parameters needed by the IDV which is firstName and lastName. For your proof of concept you can contact one of our Verified ID IDV partners [here](https://aka.ms/verifiedidisv) and update the value
-with the URL provided by them. 
-Example: https://trueidentityinc.azurewebsites.net/?firstName=Alex&lastName=Wilber
 
 ### API Payloads
 The API is called with special payload for verifying verifiable credentials. The sample payload files are modified by the sample code by copying the correct values from the `appsettings.json` file.
