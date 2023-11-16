@@ -17,6 +17,10 @@ This code sample demonstrates how to use Microsoft Entra Verified ID to verify v
 
 Welcome to Microsoft Entra Verified ID. Using this sample, you could use it to build a verifier app to prove to a verifier that you are a VerifiedEmployee, with FaceCheck. 
 
+## Deploy to Azure
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Frogulati%2FVerifier%2Fmain%2Fdotnet%2F2%2520-%2520FaceCheck%2520Verifier%2FARMTemplate%2Ftemplate.json)
+
 ## Contents
 
 To verify if your environment is completely working you can issue a VerifiedEmployee Verified ID using custom webapp or myaccount.microsoft.com for Quick Config deployments and then verify it using this sample with FaceCheck.
