@@ -170,11 +170,7 @@
                         {
                             "name": "VerifiedID__DidAuthority",
                             "value": "[parameters('VerifierAuthority')]"
-                        },
-                        {
-                            "name": "VerifiedID__CredentialType",
-                            "value": "[parameters('CredentialType')]"
-                        },
+                        }, 
                         {
                             "name": "verifiedID__CredentialManifest",
                             "value": "[parameters('CredentialManifest')]"
