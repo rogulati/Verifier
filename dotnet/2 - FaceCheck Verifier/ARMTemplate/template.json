@@ -156,23 +156,23 @@
                             "value": "[parameters('Project')]"
                         },
                         {
-                            "name": "VerifiedID__TenantId",
+                            "name": "TenantId",
                             "value": "[parameters('TenantId')]"
                         },
                         {
-                            "name": "VerifiedID__ClientId",
+                            "name": "ClientId",
                             "value": "[parameters('ClientId')]"
                         },
                         {
-                            "name": "VerifiedID__ClientSecret",
+                            "name": "ClientSecret",
                             "value": "[parameters('ClientSecret')]"
                         },
                         {
-                            "name": "VerifiedID__DidAuthority",
+                            "name": "VerifierAuthority",
                             "value": "[parameters('VerifierAuthority')]"
                         }, 
                         {
-                            "name": "verifiedID__CredentialManifest",
+                            "name": "CredentialManifest",
                             "value": "[parameters('CredentialManifest')]"
                         } 
                     ]
