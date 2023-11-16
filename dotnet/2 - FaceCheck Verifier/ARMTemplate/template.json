@@ -52,19 +52,12 @@
             },
             "defaultValue": "<ClientSecret>"
         },
-        "DidAuthority": {
+        "VerifierAuthority": {
             "type": "string",
             "metadata": {
                 "description": "DidAuthority"
             },
             "defaultValue": "<DidAuthority>"
-        },
-        "CredentialType": {
-            "type": "string",
-            "metadata": {
-                "description": "CredentialType"
-            },
-            "defaultValue": "VerifiedCredentialExpert"
         },
         "CredentialManifest": {
             "type": "string",
@@ -72,14 +65,7 @@
                 "description": "CredentialManifest"
             },
             "defaultValue": "<ManifestURL>"
-        },
-        "PhotoClaimName": {
-            "type": "string",
-            "metadata": {
-                "description": "claim name for photo - if you are issuing credentials with a photo. Otherwise leave this field blank"
-            },
-            "defaultValue": "photo"
-        }
+        } 
     },
     "variables": {
         "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]"
@@ -183,7 +169,7 @@
                         },
                         {
                             "name": "VerifiedID__DidAuthority",
-                            "value": "[parameters('DidAuthority')]"
+                            "value": "[parameters('VerifierAuthority')]"
                         },
                         {
                             "name": "VerifiedID__CredentialType",
@@ -192,11 +178,7 @@
                         {
                             "name": "verifiedID__CredentialManifest",
                             "value": "[parameters('CredentialManifest')]"
-                        },
-                        {
-                            "name": "VerifiedID__PhotoClaimName",
-                            "value": "[parameters('PhotoClaimName')]"
-                        }
+                        } 
                     ]
 
                 }
