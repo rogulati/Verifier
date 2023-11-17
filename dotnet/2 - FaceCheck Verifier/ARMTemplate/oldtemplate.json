@@ -65,10 +65,11 @@
                 "description": "CredentialManifest"
             },
             "defaultValue": "<ManifestURL>"
-
-        }
+        } 
     },
-    "variables": { "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]" },
+    "variables": {
+        "appServicePlanPortalName": "[concat(parameters('webAppName'), '-plan')]"
+    },
     "resources": [
         {
             "type": "Microsoft.Web/serverfarms",
@@ -126,7 +127,6 @@
                 "vnetRouteAllEnabled": false,
                 "vnetImagePullEnabled": false,
                 "vnetContentShareEnabled": false,
-
                 "scmSiteAlsoStopped": false,
                 "clientAffinityEnabled": true,
                 "clientCertEnabled": false,
@@ -138,6 +138,7 @@
                 "redundancyMode": "None",
                 "storageAccountRequired": false,
                 "keyVaultReferenceIdentity": "SystemAssigned",
+
                 "siteConfig": {
                     "numberOfWorkers": 1,
                     "acrUseManagedIdentityCreds": false,
@@ -155,27 +156,26 @@
                             "value": "[parameters('Project')]"
                         },
                         {
-                            "name": "VerifiedID__TenantId",
+                            "name": "TenantId",
                             "value": "[parameters('TenantId')]"
                         },
                         {
-                            "name": "VerifiedID__ClientId",
+                            "name": "ClientId",
                             "value": "[parameters('ClientId')]"
                         },
                         {
-                            "name": "VerifiedID__ClientSecret",
+                            "name": "ClientSecret",
                             "value": "[parameters('ClientSecret')]"
                         },
                         {
-                            "name": "VerifiedID__VerifierAuthority",
+                            "name": "VerifierAuthority",
                             "value": "[parameters('VerifierAuthority')]"
-                        },
+                        }, 
                         {
-                            "name": "verifiedID__CredentialManifest",
+                            "name": "CredentialManifest",
                             "value": "[parameters('CredentialManifest')]"
-                        }
+                        } 
                     ]
-
 
                 }
             },
@@ -195,6 +195,7 @@
                     }
                 }
             ]
+
         },
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
@@ -209,7 +210,6 @@
                 "hostNameType": "Verified"
             }
         },
-
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2022-09-01",
