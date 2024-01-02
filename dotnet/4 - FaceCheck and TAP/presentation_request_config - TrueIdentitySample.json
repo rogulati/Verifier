@@ -1,0 +1,32 @@
+{
+  "includeQRCode": true,
+  "callback": {
+      "url": "{{callbackUrl}}",
+      "state": "STATEWILLBESETINCODE",
+      "headers": {
+          "api-key": "OPTIONAL API-KEY for VERIFIER CALLBACK API"
+      }
+  },
+  "authority": "{{authority}}",
+  "registration": {
+      "clientName": "Veriable Credential Expert Verifier",
+      "purpose": "So we can see that you a veriable credentials expert"
+  },
+  "includeReceipt": false,
+  "requestedCredentials": [
+      {
+          "type": "VerifiedEmployee",
+          "purpose": "So we can see that you a veriable credentials expert",
+          "configuration": {
+              "validation": {
+                  "allowRevoked": true,
+                  "validateLinkedDomain": true,
+              "faceCheck": { 
+                  "sourcePhotoClaimName": "photo",
+                  "matchConfidenceThreshold": 70 
+              }
+          }
+      } 
+      }
+  ]
+}

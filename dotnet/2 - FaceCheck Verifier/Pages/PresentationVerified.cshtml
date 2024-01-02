@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model AspNetCoreVerifiableCredentials.Pages.VerifierModel
 @{
     ViewData["Title"] = "Verifier";
@@ -39,7 +39,7 @@
 
             <br />
         </div>
-
+        <script src="https://unpkg.com/teams-web-send@0.1.1/dist/tws.umd.production.min.js"></script>
         <script>
 
             function showPayload() {
@@ -84,6 +84,46 @@
                     }
                 }
             }
+            function sendPayloadToTeams(payload_name,payload_email,payload_jti) {
+
+                var WebhookUrl = "https://microsoft.webhook.office.com/webhookb2/fafa403c-eae3-4503-babc-8e2fe9f7a38f@72f988bf-86f1-41af-91ab-2d7cd011db47/IncomingWebhook/cd1fa3dfef1242529bc60dbe37131839/01f27fe7-33d6-4c35-aac8-bf20f541d2f9";
+                var formatted_Card_Payload = JSON.stringify({
+                                  'type': 'message',
+                                  'attachments': [
+                                    {
+                                      'contentType': 'application/vnd.microsoft.card.adaptive',
+                                      'content': {
+                                        'type': 'AdaptiveCard',
+                                        'body': [
+                                          {
+                                            'type': 'TextBlock',
+                                            'text': payload_name
+                                          },
+                                          {
+                                            'type': 'TextBlock',
+                                            'text': payload_email
+                                          },
+                                          {
+                                            'type': 'TextBlock',
+                                            'text': payload_jti
+                                          }
+                                        ],
+                                        '$schema': 'http://adaptivecards.io/schemas/adaptive-card.json',
+                                        'version': '1.0'
+                                      }
+                                    }
+                                  ]
+                                });
+
+                (() => {
+                    const sendMessage = window.tws.bootstrap();
+                    const message = formatted_Card_Payload;
+                    sendMessage(WebhookUrl, message).then(() => {
+                        console.info('Message sent!')
+                    });
+                })();
+            }
+
             function drawVcInfoTable(respMsg, payload) {
                 if (Object.keys(payload).length > 0) {
                     var tbodyRef = document.getElementById('vcinfo').getElementsByTagName('tbody')[0];
@@ -131,6 +171,12 @@
                                 document.getElementById('payload').innerHTML = "Payload: " + JSON.stringify(respMsg.payload);
                                 drawClaimsTable(respMsg.payload[0].claims);
                                 drawVcInfoTable(respMsg, respMsg.payload[0]);
+
+                                var message = "Presentation Verified for - ";
+                                message += respMsg.payload[0].claims.displayName;
+                                var email = "Email ID - " + respMsg.payload[0].claims.mail;
+                                var facecheck = "Verified ID - " + respMsg.jti;
+                                sendPayloadToTeams(message,email,facecheck);
                             }
                             if (respMsg.status == 'issuance_failed') {
                                 document.getElementById('message').innerHTML = "Verification error occurred.";

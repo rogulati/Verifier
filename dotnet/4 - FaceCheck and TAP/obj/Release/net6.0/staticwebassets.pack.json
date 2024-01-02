@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\authenticator-icon.png",
+      "PackagePath": "staticwebassets\\authenticator-icon.png"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\qrcode.min.js",
+      "PackagePath": "staticwebassets\\qrcode.min.js"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\rcdemos-banner.png",
+      "PackagePath": "staticwebassets\\rcdemos-banner.png"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "C:\\repos\\Ignite2023\\v2\\onboard-with-verifiedid-and-tap\\wwwroot\\woodgrove.png",
+      "PackagePath": "staticwebassets\\woodgrove.png"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.AspNetCoreVerifiableCredentials.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "build\\AspNetCoreVerifiableCredentials.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "buildMultiTargeting\\AspNetCoreVerifiableCredentials.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.AspNetCoreVerifiableCredentials.props",
+      "PackagePath": "buildTransitive\\AspNetCoreVerifiableCredentials.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

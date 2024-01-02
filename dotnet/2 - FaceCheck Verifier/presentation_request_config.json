@@ -22,7 +22,7 @@
   
       "purpose": "So we can see that you a veritable credentials expert",
       "acceptedIssuers": [       
-        "did:web:credentials.microsoft.com","did:web:verifiedid.entra.microsoft.com:158b2627-7c5c-4e4c-b633-e4de03758427:5ac83804-5ad5-4147-02ea-77bff1e8ca40"
+        "did:web:credentials.microsoft.com","did:web:did.rohitgulati.com"
       ],
       "configuration": {
         "validation": {

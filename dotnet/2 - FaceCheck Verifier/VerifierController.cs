@@ -236,7 +236,7 @@ namespace AspNetCoreVerifiableCredentials
                 var details = new {
                     clientName = presentationRequest["registration"]["clientName"].ToString(),
                     purpose = presentationRequest["registration"]["purpose"].ToString(),
-                    VerifierAuthority = AppSettings.VerifierAuthority,
+                    VerifierAuthority = AppSettings.VerifierAuthority,                    
                     type = presentationRequest["requestedCredentials"][0]["type"].ToString(),
                    acceptedIssuers = presentationRequest["requestedCredentials"][0]["acceptedIssuers"].ToArray()
                 };

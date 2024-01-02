@@ -1,5 +1,7 @@
 C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\AspNetCoreVerifiableCredentials.exe
 C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\appsettings.json
+C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\ARMTemplate\oldtemplate.json
+C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\ARMTemplate\template.json
 C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\CredentialFiles\VerifiedCredentialExpertDisplayDefinition.json
 C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\CredentialFiles\VerifiedCredentialExpertRulesDefinition.json
 C:\repos\Standalone Verifier\Verifier\dotnet\2 - FaceCheck Verifier\publish\presentation_request_config.json
