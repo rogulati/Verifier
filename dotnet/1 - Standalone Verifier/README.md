@@ -19,13 +19,9 @@ Welcome to Microsoft Entra Verified ID. In this sample, we'll teach you to issue
 
 ## Contents
 
-The project is divided in 2 parts, one for issuance and one for verifying a verifiable credential. Depending on the scenario you need you can remove 1 part. To verify if your environment is completely working you can use both parts to issue a verifiedcredentialexpert VC and verify that as well.
+The project covers a standalone app for verifying a verifiable credential.  To verify if your environment is completely working you can use both parts to issue a verifiedcredentialexpert VC and verify that as well.
 
-| Issuance | |
-|------|--------|
-| Pages/Issuer.cshtml|The basic webpage containing the javascript to call the APIs for issuance. |
-| IssuerController.cs | This is the controller which contains the API called from the webpage. It calls the REST API after getting an access token through MSAL. |
-| issuance_request_config.json | The sample payload send to the server to start issuing a vc. |
+
 
 | Verification | |
 |------|--------|
@@ -67,8 +63,8 @@ Register an application in Azure Active Directory:
 To run the sample, clone the repository, compile & run it. It's callback endpoint must be publically reachable, and for that reason, use a tool like  `ngrok` as a reverse proxy to reach your app.
 
 ```Powershell
-git clone https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet.git
-cd active-directory-verifiable-credentials-dotnet/1-asp-net-core-api-idtokenhint
+git clone https://github.com/rogulati/Verifier.git
+cd dotnet/1 - Standalone Verifier
 ```
 
 ### Create your credential

@@ -73,14 +73,14 @@ Register an application in Entra ID:
 
 2. Update `VerifierAuthority` parameter in `appsettings.json` to Decentralized identifier obtained from your tenant as described [here](https://learn.microsoft.com/azure/active-directory/verifiable-credentials/verifiable-credentials-configure-verifier#gather-tenant-details-to-set-up-your-sample-application)
 
-3. Change the branding image to your company's brand image by first renaming your company's brand image to rcdemos-banner.png and then copying it over to wwwroot 
-folder of this sample thereby replacing the current rcdemos-banner.png image.
+3. Change the branding image to your company's brand image by first renaming your company's brand image to woodgrove.png and then copying it over to wwwroot 
+folder of this sample thereby replacing the current woodgrove.png image.
 
 4. To run the sample, clone the repository, compile & run it. It's callback endpoint must be publically reachable, and for that reason, use `ngrok` as a reverse proxy to reach your app.
 
 ```Powershell
-git clone https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet.git
-cd active-directory-verifiable-credentials-dotnet/4-asp-net-core-api-verify-and-onboard
+git clone https://github.com/rogulati/Verifier.git
+cd dotnet/3- TAP
 ```
 5. Using a different command prompt, run ngrok to set up a URL on 5000. You can install ngrok globally by using the [ngrok npm package](https://www.npmjs.com/package/ngrok/).
 ```Powershell

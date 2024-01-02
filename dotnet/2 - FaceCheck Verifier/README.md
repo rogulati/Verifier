@@ -41,7 +41,7 @@ Before you can run this sample make sure your environment is setup correctly, fo
 
 Run the [Configure.PS1](./AppCreationScripts/AppCreationScripts.md) powershell script in the AppCreationScripts directory or follow these manual steps to create an application registrations, give the application the correct permissions so it can access the Verifiable Credentials Request REST API:
 
-Register an application in Azure Active Directory:
+Register an application in Entra ID:
 
 1. Sign in to the Azure portal using either a work or school account or a personal Microsoft account.
 1. Navigate to the Microsoft identity platform for developers App registrations page.
@@ -67,8 +67,8 @@ Register an application in Azure Active Directory:
 To run the sample, clone the repository, compile & run it. It's callback endpoint must be publically reachable, and for that reason, use a tool like  `ngrok` as a reverse proxy to reach your app.
 
 ```Powershell
-git clone https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet.git
-cd active-directory-verifiable-credentials-dotnet/1-asp-net-core-api-idtokenhint
+git clone https://github.com/rogulati/Verifier.git
+cd dotnet/2 - FaceCheck Verifier
 ```
 
 ### Create your credential
