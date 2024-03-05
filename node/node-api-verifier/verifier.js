@@ -25,19 +25,33 @@ var parser = bodyParser.urlencoded({ extended: false });
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Setup the presentation request payload template
-var requestConfigFile = process.argv.slice(2)[2];
-if ( !requestConfigFile ) {
-  requestConfigFile = process.env.PRESENTATIONFILE || './presentation_request_config.json';
-}
-var presentationConfig = require( requestConfigFile );
-presentationConfig.registration.clientName = "Entra Verified ID verifier";
-// copy the issuerDID from the settings and fill in the acceptedIssuers part of the payload
-// this means only that issuer should be trusted for the requested credentialtype
-// this value is an array in the payload, you can trust multiple issuers for the same credentialtype
-// very common to accept the test VCs and the Production VCs coming from different verifiable credential services
-if ( presentationConfig.callback.headers ) {
-  presentationConfig.callback.headers['api-key'] = mainApp.config["apiKey"];
-}
+var presentationConfig = {
+  "includeQRCode": false,
+  "callback": {
+    "url": "https://YOURPUBLICREACHABLEHOSTNAME/api/verifier/presentationCallback",
+    "state": "STATEWILLBESETINCODE",
+    "headers": {
+      "api-key": mainApp.config["apiKey"]
+    }
+  },
+  "authority": mainApp.config["VerifierAuthority"],
+  "registration": {
+    "clientName": "VerifiedEmployee Verifier",
+    "purpose": "So we can see that you a veriable credentials expert"
+  },
+  "includeReceipt": true,
+  "requestedCredentials": [
+    {
+      "type": mainApp.config["CredentialType"]
+    }
+  ],
+  "configuration": {
+    "validation": {
+      "allowRevoked": true,
+      "validateLinkedDomain": true
+    }
+  }
+};
 
 function requestTrace( req ) {
   var dateFormatted = new Date().toISOString().replace("T", " ");
@@ -78,12 +92,7 @@ mainApp.app.get('/api/verifier/presentation-request', async (req, res) => {
       return; 
   }
   console.log( `accessToken: ${accessToken}` );
-  // modify the callback method to make it easier to debug 
-  // with tools like ngrok since the URI changes all the time
-  // this way you don't need to modify the callback URL in the payload every time
-  // ngrok changes the URI
-  //presentationConfig.authority = mainApp.config["VerifierAuthority"]
-  presentationConfig.authority = process.env.VerifierAuthority || mainApp.config["VerifierAuthority"]
+
   presentationConfig.callback.url = `https://${req.hostname}/api/verifier/presentation-request-callback`;
   presentationConfig.callback.state = id;
   //presentationConfig.type = process.env.VCtype || mainApp.config["VCtype"];
@@ -197,40 +206,6 @@ mainApp.app.get('/api/verifier/presentation-response', async (req, res) => {
     } else {
       console.log( `400 - Unknown state: ${id}` );
       res.status(400).json({'error': `Unknown state: ${id}`});      
-    }
-  })
-})
-
-/**
- * B2C REST API Endpoint for retrieving the VC presentation response
- * body: The InputClaims from the B2C policy. It will only be one claim named 'id'
- * return: a JSON structure with claims from the VC presented
- */
-var parserJson = bodyParser.json();
-mainApp.app.post('/api/verifier/presentation-response-b2c', parserJson, async (req, res) => {
-  var id = req.body.id;
-  requestTrace( req );
-  mainApp.sessionStore.get( id, (error, store) => {
-    if (store && store.sessionData && store.sessionData.status == "presentation_verified" ) {
-      console.log("Has VC. Will return it to B2C");      
-      var claims = store.sessionData.presentationResponse.verifiedCredentialsData[0].claims;
-      var claimsExtra = {
-        'vcType': presentationConfig.presentation.requestedCredentials[0].type,
-        'vcIss': store.sessionData.presentationResponse.verifiedCredentialsData[0].authority,
-        'vcSub': store.sessionData.presentationResponse.subject,
-        'vcKey': store.sessionData.presentationResponse.subject.replace("did:ion:", "did.ion.").split(":")[0]
-        };        
-        var responseBody = { ...claimsExtra, ...claims }; // merge the two structures
-        req.session.sessionData = null; 
-        console.log( responseBody );
-        res.status(200).json( responseBody );   
-    } else {
-      console.log('Will return 409 to B2C');
-      res.status(409).json({
-        'version': '1.0.0', 
-        'status': 400,
-        'userMessage': 'Verifiable Credentials not presented'
-        });   
     }
   })
 })
